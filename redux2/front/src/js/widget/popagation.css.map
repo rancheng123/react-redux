@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,6BAA6B;EACzB,UAAU,EAAE,KAAK",
+"sources": ["popagation.scss"],
+"names": [],
+"file": "popagation.css"
+}
