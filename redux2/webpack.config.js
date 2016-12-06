@@ -13,11 +13,11 @@ module.exports = {
     //页面入口文件配置
     entry: {
         index : buildConfig.srcPath + 'js/router.js',
-       // 'commentEs6':buildConfig.srcPath + 'js/compents/login/order/order_list.js'
+        // 'commentEs6':buildConfig.srcPath + 'js/compents/login/order/order_list.js'
 
 
         //支持数组形式，将加载数组中的所有模块，但以最后一个模块作为输出
-       // page2: ["./entry1", "./entry2"]
+        // page2: ["./entry1", "./entry2"]
     },
     //入口文件输出配置
     output: {
@@ -33,26 +33,40 @@ module.exports = {
     module: {
 
         /*
-            注意点：
-                需要提前加载插件 style-loader
-                              css-loader
-                              sass-loader
-                              jsx-loader
-                              url-loader
-                     通过cnpm install jsx-loader --save-dev
-        */
+         注意点：
+         需要提前加载插件 style-loader
+         css-loader
+         sass-loader
+         jsx-loader
+         url-loader
+         通过cnpm install jsx-loader --save-dev
+         */
 
 
         //加载器配置
         loaders: [
-            { test: /\.css$/, loader: 'style-loader!css-loader' },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },
             {
                 test: /\.js$/,
-                                            //ES2015转码规则       react转码规则
+                //ES2015转码规则       react转码规则
                 loader: 'babel-loader?presets[]=es2015&presets[]=react'
             },
-            { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader?sourceMap'},
-            { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
+            {
+                test: /\.scss$/,
+                loader: 'style-loader!css-loader?sourceMap!sass-loader?sourceMap'
+                //loaders: ["style-loader", "css-loader?sourceMap", "sass-loader?sourceMap"]
+
+            },
+
+
+
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url-loader?limit=8192'
+            }
         ]
     },
     //其它解决方案配置
@@ -100,16 +114,16 @@ module.exports = {
 
 
 /*
-    执行webpack 命令行
+ 执行webpack 命令行
 
-        webpack --display-error-details
+ webpack --display-error-details
 
-         webpack --config XXX.js   //使用另一份配置文件（比如webpack.config2.js）来打包
+ webpack --config XXX.js   //使用另一份配置文件（比如webpack.config2.js）来打包
 
-         webpack --watch   //监听变动并自动打包
+ webpack --watch   //监听变动并自动打包
 
-         webpack -p    //压缩混淆脚本，这个非常非常重要！
+ webpack -p    //压缩混淆脚本，这个非常非常重要！
 
-         webpack -d    //生成map映射文件，告知哪些模块被最终打包到哪里了
+ webpack -d    //生成map映射文件，告知哪些模块被最终打包到哪里了
 
-*/
+ */
